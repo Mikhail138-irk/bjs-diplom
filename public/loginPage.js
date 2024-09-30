@@ -1,24 +1,22 @@
-"use strict"
+'use strict';
+
 const userForm = new userForm();
 
-userForm.loginFormCallback = function(data) {
-    ApiConnector.login(data, (response) => {
-        if (response.success) {
+userForm.loginFormCallback = ({login, password}) => {
+    ApiConnector.login({login, password}, (data) => {
+        if (data.success) {   
             location.reload();
-        }
-        else {
-            userForm.setLoginErrorMessage(response.error);
-        }
+        } else {
+            userForm.setLoginErrorMessage(data.error);    
+        };
     });
-}
+};
 
-userForm.registerFormCallback = function(data) {
-    ApiConnector.register(data, (response) => {
-        if (response.success) {
+userForm.registerFormCallback = ({login, password}) =>
+    ApiConnector.register({login, password}, (data) => {
+        if (data.success) {   
             location.reload();
-        }
-        else {
-            userForm.setRegisterErrorMessage(response.error);
-        }
+        } else {
+            userForm.setRegisterErrorMessage(data.error);     
+        };
     });
-}
