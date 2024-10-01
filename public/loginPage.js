@@ -1,6 +1,6 @@
 'use strict';
 
-const userForm = new userForm();
+const formForUser = new userForm();
 
 userForm.loginFormCallback = ({login, password}) => {
     ApiConnector.login({login, password}, (data) => {
